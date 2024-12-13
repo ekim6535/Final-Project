@@ -5,12 +5,13 @@ pub mod data_loader {
 
     #[derive(Debug, Deserialize)]
     pub struct HouseRecord {
-        pub price: f64,
-        pub bedrooms: u32,
-        pub bathrooms: u32,
-        pub sqft_living: u32,
-        pub sqft_lot: u32,
-        pub floors: u32,
+        pub bedroom_count: u32,     // Number of bedrooms
+        pub net_sqm: f64,           // Usable interior space in square meters
+        pub center_distance: f64,   // Distance to central city/downtown
+        pub metro_distance: f64,    // Distance to nearest subway or bus stop
+        pub floor: u32,             // Floor number
+        pub age: u32,               // Age of the property
+        pub price: f64, 
     }
     pub fn load_data(file_path: &str) -> Result<Vec<HouseRecord>, Box<dyn Error>> {
         let mut reader = Reader::from_path(file_path)?;
