@@ -12,3 +12,15 @@ pub mod data_loader {
         pub sqft_lot: u32,
         pub floors: u32,
     }
+    pub fn load_data(file_path: &str) -> Result<Vec<HouseRecord>, Box<dyn Error>> {
+        let mut reader = Reader::from_path(file_path)?;
+        let mut records = Vec::new();
+
+        for result in reader.deserialize() {
+            let record: HouseRecord = result?;
+            records.push(record);
+        }
+
+        Ok(records)
+    }
+}
