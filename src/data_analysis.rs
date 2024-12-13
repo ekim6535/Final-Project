@@ -1,4 +1,4 @@
-use crate::data_loader::HouseRecord;
+use crate::data_loader::data_loader::HouseRecord;
 use std::collections::HashMap;
 pub mod data_analysis {
     pub fn calculate_statistics(data: &[HouseRecord]) -> HashMap<&'static str, f64> {
