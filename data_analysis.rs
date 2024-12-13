@@ -14,3 +14,14 @@ pub mod data_analysis {
             ("average_age", avg_age),
         ])
     }
+pub fn find_price_trends(data: &[HouseRecord]) -> HashMap<&'static str, f64> {
+        let avg_price_per_sqm = data
+            .iter()
+            .map(|r| r.price / r.net_sqm)
+            .sum::<f64>()
+            / data.len() as f64;
+
+        HashMap::from([
+            ("average_price_per_sqm", avg_price_per_sqm),
+        ])
+    }
