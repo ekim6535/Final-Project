@@ -1,0 +1,12 @@
+[package]
+name = "Final-Project"
+version = "0.1.0"
+edition = "2021"
+authors = ["Eric Kim"]
+description = "A project to analyze a Kaggle dataset and identify patterns in housing prices."
+repository = "https://github.com/ekim6535/Final-Project"
+
+[dependencies]
+csv = "1.1"                 # For reading CSV files
+serde = { version = "1.0", features = ["derive"] } # For serializing and deserializing data
+plotters = "0.3"            # For creating visualizations
