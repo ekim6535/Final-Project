@@ -5,6 +5,7 @@ mod visualization;
 use data_loader::load_data;
 pub(crate) use data_analysis::{calculate_statistics, find_price_trends, correlation_analysis};
 use visualization::generate_histogram;
+use std::error::Error;
 
 fn main() -> Result<(), Box<dyn Error>> {
     // Load the dataset

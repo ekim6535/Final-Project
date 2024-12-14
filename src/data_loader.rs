@@ -3,7 +3,7 @@ use serde::Deserialize;
 use std::error::Error;
 
 // Updated HouseRecord struct
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct HouseRecord {
     pub bedroom_count: u32,     // Number of bedrooms
     pub net_sqm: f64,           // Total usable interior space (in square meters)
