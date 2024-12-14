@@ -1,27 +1,27 @@
-pub mod data_loader {
-    use csv::Reader;
-    use serde::Deserialize;
-    use std::error::Error;
+use csv::Reader;
+use serde::Deserialize;
+use std::error::Error;
 
-    #[derive(Debug, Deserialize)]
-    pub struct HouseRecord {
-        pub bedroom_count: u32,     // Number of bedrooms
-        pub net_sqm: f64,           // Usable interior space in square meters
-        pub center_distance: f64,   // Distance to central city/downtown
-        pub metro_distance: f64,    // Distance to nearest subway or bus stop
-        pub floor: u32,             // Floor number
-        pub age: u32,               // Age of the property
-        pub price: f64, 
+// Updated HouseRecord struct
+#[derive(Debug, Deserialize)]
+pub struct HouseRecord {
+    pub bedroom_count: u16,     // Number of bedrooms
+    pub net_sqm: f64,           // Total usable interior space (in square meters)
+    pub center_distance: f64,   // Distance from the city center (in kilometers)
+    pub metro_distance: f64,    // Distance from the nearest metro or bus station (in kilometers)
+    pub floor: i32,             // Specific floor (-1 for basement, 0 for ground floor, etc.)
+    pub age: u32,               // Age of the property (in years)
+    pub price: f64,             // Price of the property
+}
+
+pub fn load_data(file_path: &str) -> Result<Vec<HouseRecord>, Box<dyn Error>> {
+    let mut reader = Reader::from_path(file_path)?;
+    let mut records = Vec::new();
+
+    for result in reader.deserialize() {
+        let record: HouseRecord = result?;
+        records.push(record);
     }
-    pub fn load_data(file_path: &str) -> Result<Vec<HouseRecord>, Box<dyn Error>> {
-        let mut reader = Reader::from_path(file_path)?;
-        let mut records = Vec::new();
 
-        for result in reader.deserialize() {
-            let record: HouseRecord = result?;
-            records.push(record);
-        }
-
-        Ok(records)
-    }
+    Ok(records)
 }
