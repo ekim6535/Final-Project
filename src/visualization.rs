@@ -1,6 +1,6 @@
-use crate::data_loader::HouseRecord;
-use plotters::prelude::*;
-use std::error::Error;
+use crate::data_loader::HouseRecord; 
+use plotters::prelude::*; 
+use std::error::Error; 
 
 pub fn generate_histogram<F>(
     data: &[HouseRecord],
@@ -22,8 +22,8 @@ where
         .x_label_area_size(30)
         .y_label_area_size(30)
         .build_cartesian_2d(
-            *values.iter().min_by(|a, b| a.partial_cmp(b).unwrap()).unwrap()
-                ..*values.iter().max_by(|a, b| a.partial_cmp(b).unwrap()).unwrap(),
+            *values.iter().min_by(|a, b| a.partial_cmp(b).unwrap()).unwrap()..
+            *values.iter().max_by(|a, b| a.partial_cmp(b).unwrap()).unwrap(),
             0..values.len() / 10,
         )?;
 
