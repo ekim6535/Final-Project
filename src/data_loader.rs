@@ -2,7 +2,6 @@ use csv::Reader;
 use serde::Deserialize;
 use std::error::Error;
 
-// Updated HouseRecord struct
 #[derive(Debug, Deserialize, Clone)]
 pub struct HouseRecord {
     pub bedroom_count: u32,     // Number of bedrooms
