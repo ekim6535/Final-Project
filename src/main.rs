@@ -1,17 +1,13 @@
-// Modules
 mod data_loader;
 mod data_analysis;
 mod visualization;
-mod tests;
 
-use data_loader::data_loader::load_data;
-use data_analysis::data_analysis::{calculate_statistics, find_price_trends, correlation_analysis};
-use visualization::visualization::generate_histogram;
-use std::error::Error;
-
+use data_loader::load_data;
+use data_analysis::{calculate_statistics, find_price_trends, correlation_analysis};
+use visualization::generate_histogram;
 fn main() -> Result<(), Box<dyn Error>> {
     // Load the dataset
-    let dataset_path = "data/final_house.csv";
+    let dataset_path = "data/house.csv"; // Updated CSV file name
     let data = load_data(dataset_path)?;
 
     // Perform analysis
@@ -25,8 +21,12 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("Correlations: {:?}", correlations);
 
     // Generate visualizations
-    generate_histogram(&data, "Price", |record| record.price, "output/price_histogram.png")?;
+    generate_histogram(
+        &data,
+        "Price",
+        |record| record.price,
+        "output/price_histogram.png",
+    )?;
 
     Ok(())
 }
-
