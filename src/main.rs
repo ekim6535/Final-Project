@@ -3,8 +3,9 @@ mod data_analysis;
 mod visualization;
 
 use data_loader::load_data;
-use data_analysis::{calculate_statistics, find_price_trends, correlation_analysis};
+pub(crate) use data_analysis::{calculate_statistics, find_price_trends, correlation_analysis};
 use visualization::generate_histogram;
+
 fn main() -> Result<(), Box<dyn Error>> {
     // Load the dataset
     let dataset_path = "data/house.csv"; // Updated CSV file name

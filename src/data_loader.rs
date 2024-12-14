@@ -5,7 +5,7 @@ use std::error::Error;
 // Updated HouseRecord struct
 #[derive(Debug, Deserialize)]
 pub struct HouseRecord {
-    pub bedroom_count: u16,     // Number of bedrooms
+    pub bedroom_count: u32,     // Number of bedrooms
     pub net_sqm: f64,           // Total usable interior space (in square meters)
     pub center_distance: f64,   // Distance from the city center (in kilometers)
     pub metro_distance: f64,    // Distance from the nearest metro or bus station (in kilometers)
